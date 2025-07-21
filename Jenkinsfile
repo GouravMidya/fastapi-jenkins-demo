@@ -8,7 +8,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // 'git' command checks out the code from the repo configured in the Jenkins job.
-                git 'https://github.com/YOUR_USERNAME/fastapi-jenkins-demo.git'
+                git 'https://github.com/GouravMidya/fastapi-jenkins-demo.git'
                 echo 'Source code checked out.'
             }
         }
@@ -39,7 +39,7 @@ pipeline {
                     // Use the Docker plugin to interact with Docker.
                     // Replace 'your-dockerhub-username' with your actual Docker Hub username.
                     // The BUILD_NUMBER is a variable provided by Jenkins.
-                    def dockerImage = docker.build("your-dockerhub-username/fastapi-demo:${env.BUILD_NUMBER}")
+                    def dockerImage = docker.build("gouravmidya/fastapi-demo:${env.BUILD_NUMBER}")
 
                     // To push, you first need to configure credentials in Jenkins.
                     // Go to Jenkins > Manage Jenkins > Credentials.
