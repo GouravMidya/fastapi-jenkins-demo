@@ -5,13 +5,13 @@ pipeline {
     // 2. Stages: The main blocks of work in the pipeline.
     stages {
         // 3. Checkout Stage: Clones the code from your repository.
-        stage('Checkout') {
-            steps {
-                // 'git' command checks out the code from the repo configured in the Jenkins job.
-                git 'https://github.com/GouravMidya/fastapi-jenkins-demo.git'
-                echo 'Source code checked out.'
-            }
-        }
+        // stage('Checkout') {
+        //     steps {
+        //         // 'git' command checks out the code from the repo configured in the Jenkins job.
+        //         git 'https://github.com/GouravMidya/fastapi-jenkins-demo.git'
+        //         echo 'Source code checked out.'
+        //     }
+        // }
 
         // 4. Build Stage: Prepare the application (e.g., install dependencies).
         stage('Build') {
