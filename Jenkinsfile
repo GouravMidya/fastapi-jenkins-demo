@@ -3,7 +3,7 @@ pipeline {
     agent {
         kubernetes {
             label 'default' // Or whatever your pod template is named
-            container 'docker'
+            defaultContainer 'docker'
         }
     }
 
