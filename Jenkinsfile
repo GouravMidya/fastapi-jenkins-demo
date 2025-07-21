@@ -2,7 +2,7 @@ pipeline {
     // Specify the pod template label and the container within it to use.
     agent {
         kubernetes {
-            label 'default' // Or whatever your pod template is named
+            label 'learning-jenkins-jenkins-agent' // Or whatever your pod template is named
             defaultContainer 'docker'
         }
     }
