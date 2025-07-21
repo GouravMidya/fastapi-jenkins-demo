@@ -1,21 +1,17 @@
 pipeline {
-    // Specify the pod template label and the container within it to use.
     agent {
         kubernetes {
-            label 'learning-jenkins-jenkins-agent' // Or whatever your pod template is named
+            // Inherit from the pod template named 'default' in your Jenkins config.
+            // This is the modern, recommended approach.
+            inheritFrom 'default' 
             defaultContainer 'docker'
         }
     }
 
     stages {
-        // The 'docker' container doesn't have Python, so we can't run pip directly.
-        // This is fine, because the real build happens inside the Dockerfile anyway.
-        // We will remove the 'Build' and 'Test' stages and rely on the Docker build.
         stage('Build and Push Docker Image') {
             steps {
                 script {
-                    // This command will now work because it's running in the 'docker' container
-                    // which has the Docker client and access to the Docker daemon.
                     def dockerImage = docker.build("gouravmidya/fastapi-demo:${env.BUILD_NUMBER}")
                     
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-credentials') {
